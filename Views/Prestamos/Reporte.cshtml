@@ -1,0 +1,154 @@
+@model IEnumerable<Biblioteca.Web.Models.PrestamoReporte>
+
+@{
+    ViewData["Title"] = "Reporte de préstamos";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+        <h1 class="page-title mb-1">
+            Reporte de préstamos
+        </h1>
+
+        <p class="text-muted mb-0">
+            Consulta los préstamos por intervalo de fechas.
+        </p>
+    </div>
+
+</div>
+
+<div class="card shadow-sm mb-4">
+
+    <div class="card-body">
+
+        <form asp-action="Reporte"
+              method="get"
+              class="row g-3 align-items-end">
+
+            <div class="col-md-4">
+
+                <label class="form-label">
+                    Desde
+                </label>
+
+                <input type="date"
+                       name="desde"
+                       value="@ViewData["Desde"]"
+                       class="form-control" />
+
+            </div>
+
+            <div class="col-md-4">
+
+                <label class="form-label">
+                    Hasta
+                </label>
+
+                <input type="date"
+                       name="hasta"
+                       value="@ViewData["Hasta"]"
+                       class="form-control" />
+
+            </div>
+
+            <div class="col-md-4">
+
+                <button type="submit"
+                        class="btn btn-dark">
+                    Consultar reporte
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<div asp-validation-summary="ModelOnly"
+     class="text-danger mb-3">
+</div>
+
+<div class="card shadow-sm">
+
+    <div class="table-responsive">
+
+        <table class="table table-hover">
+
+            <thead>
+                <tr>
+                    <th>Socio</th>
+                    <th>Libro</th>
+                    <th>Fecha préstamo</th>
+                    <th>Fecha límite</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @if (!Model.Any())
+                {
+                    <tr>
+                        <td colspan="5"
+                            class="text-center py-5 text-muted">
+                            No existen préstamos para el rango seleccionado.
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                <strong>
+                                    @item.NombreSocio
+                                </strong>
+                                <br />
+                                <small class="text-muted">
+                                    DNI: @item.DNI
+                                </small>
+                            </td>
+
+                            <td>
+                                @item.TituloLibro
+                            </td>
+
+                            <td>
+                                @item.FechaPrestamo.ToString("dd/MM/yyyy")
+                            </td>
+
+                            <td>
+                                @item.FechaLimite.ToString("dd/MM/yyyy")
+                            </td>
+
+                            <td>
+                                @if (item.Estado == "Pendiente")
+                                {
+                                    <span class="badge bg-warning text-dark">
+                                        Pendiente
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-success">
+                                        Devuelto
+                                    </span>
+                                }
+                            </td>
+
+                        </tr>
+                    }
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>

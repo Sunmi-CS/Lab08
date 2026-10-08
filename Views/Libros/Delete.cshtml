@@ -1,0 +1,59 @@
+@model Biblioteca.Web.Models.Libro
+
+@{
+    ViewData["Title"] = "Eliminar libro";
+}
+
+<div class="row justify-content-center">
+
+    <div class="col-lg-6">
+
+        <div class="card shadow-sm">
+
+            <div class="card-body p-4">
+
+                <h2 class="text-danger mb-3">
+                    Eliminar libro
+                </h2>
+
+                <p>
+                    ¿Deseas dar de baja el siguiente libro?
+                </p>
+
+                <div class="bg-light rounded p-3 mb-4">
+                    <strong>@Model.Titulo</strong>
+                    <br />
+                    <small class="text-muted">
+                        @Model.NombreAutor · @Model.ISBN
+                    </small>
+                </div>
+
+                <div class="alert alert-warning">
+                    El libro no será eliminado físicamente.
+                    Se realizará una eliminación lógica.
+                </div>
+
+                <form asp-action="Delete" method="post">
+
+                    <input type="hidden"
+                           asp-for="LibroId" />
+
+                    <button type="submit"
+                            class="btn btn-danger">
+                        Sí, dar de baja
+                    </button>
+
+                    <a asp-action="Index"
+                       class="btn btn-outline-secondary">
+                        Cancelar
+                    </a>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

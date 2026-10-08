@@ -1,0 +1,76 @@
+html {
+    font-size: 14px;
+}
+
+body {
+    background: #f5f7fa;
+    color: #263238;
+}
+
+.navbar-library {
+    background: #263238;
+}
+
+.navbar-brand {
+    letter-spacing: .3px;
+}
+
+.page-title {
+    font-weight: 700;
+    color: #263238;
+}
+
+.card {
+    border: none;
+    border-radius: 14px;
+}
+
+.card-header {
+    background: white;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table thead th {
+    font-size: .85rem;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    color: #607d8b;
+    background: #f8f9fa;
+}
+
+.table tbody tr {
+    vertical-align: middle;
+}
+
+.btn {
+    border-radius: 8px;
+}
+
+.form-control,
+.form-select {
+    border-radius: 8px;
+    padding: .65rem .8rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #607d8b;
+    box-shadow: 0 0 0 .2rem rgba(96, 125, 139, .15);
+}
+
+.badge-status {
+    padding: .45rem .7rem;
+    border-radius: 20px;
+}
+
+.book-title {
+    font-weight: 600;
+}
+
+.search-box {
+    max-width: 400px;
+}
